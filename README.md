@@ -1,1 +1,344 @@
-# custom
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCENUTUAL</title>
+    <!-- Tailwind CSS CDN for responsive and modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter for a clean and professional look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom body font and background color */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* A very light gray for a clean backdrop */
+        }
+        /* Custom scrollbar styling for a refined user experience */
+        ::-webkit-scrollbar {
+            width: 8px; /* Width of the scrollbar */
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Color of the scrollbar track */
+            border-radius: 10px; /* Rounded corners for the track */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a78bfa; /* Color of the scrollbar thumb (purple tone) */
+            border-radius: 10px; /* Rounded corners for the thumb */
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b5cf6; /* Darker purple on hover */
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <!-- Header Section: Brand Logo, Navigation, and User Icons -->
+    <!-- Tips:
+        - `sticky top-0 z-50`: Keeps the header visible when scrolling, enhancing navigation.
+        - `rounded-b-lg`: Adds a subtle rounded bottom edge for a softer look.
+        - `container mx-auto`: Centers the content and provides consistent padding.
+        - `md:flex space-x-6`: Uses Tailwind's responsive classes to hide nav on small screens and show it as a flex row on medium screens and up.
+    -->
+    <header class="bg-white shadow-md py-4 px-4 sm:px-6 lg:px-8 sticky top-0 z-50 rounded-b-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Brand Logo -->
+            <!-- Tips:
+                - Using an `<img>` tag for the logo allows for a custom brand image.
+                - `h-10` and `w-auto`: Ensures the logo scales proportionally and doesn't distort.
+                - `alt` attribute: Crucial for accessibility and SEO.
+                - Brand name shortened to "SCENUTUAL" as requested.
+            -->
+            <a href="#" class="flex items-center">
+                <img src="356b8ce6-b32f-42ac-b230-998bd362c644__1_-removebg-preview.png" alt="SCENUTUAL Logo" class="h-10 w-auto mr-2">
+                <span class="text-2xl font-bold text-indigo-600">SCENUTUAL</span>
+            </a>
+
+            <!-- Navigation Menu (Hidden on small screens, shown on medium and larger) -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="text-gray-600 hover:text-indigo-600 transition duration-300 ease-in-out font-medium">Home</a>
+                <a href="#products" class="text-gray-600 hover:text-indigo-600 transition duration-300 ease-in-out font-medium">Shop</a>
+                <a href="#about-us" class="text-gray-600 hover:text-indigo-600 transition duration-300 ease-in-out font-medium">About</a>
+                <a href="#contact-info" class="text-gray-600 hover:text-indigo-600 transition duration-300 ease-in-out font-medium">Contact</a>
+            </nav>
+
+            <!-- Icons (Cart, User, and Mobile Hamburger Menu) -->
+            <div class="flex items-center space-x-4">
+                <!-- Cart Icon -->
+                <a href="#" class="text-gray-600 hover:text-indigo-600 transition duration-300 ease-in-out">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </a>
+                <!-- User Icon -->
+                <a href="#" class="text-gray-600 hover:text-indigo-600 transition duration-300 ease-in-out">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                </a>
+                <!-- Hamburger menu for mobile (only visible on small screens) -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (hidden by default, toggled by JavaScript) -->
+        <!-- Tips:
+            - `hidden` class: Initially hides the menu.
+            - `flex flex-col space-y-2`: Stacks menu items vertically.
+            - JavaScript: Toggles the `hidden` class for smooth mobile navigation.
+        -->
+        <div id="mobile-menu" class="md:hidden mt-4 hidden">
+            <nav class="flex flex-col space-y-2 px-2">
+                <a href="#" class="block text-gray-600 hover:text-indigo-600 transition duration-300 ease-in-out font-medium py-2">Home</a>
+                <a href="#products" class="block text-gray-600 hover:text-indigo-600 transition duration-300 ease-in-out font-medium py-2">Shop</a>
+                <a href="#about-us" class="block text-gray-600 hover:text-indigo-600 transition duration-300 ease-in-out font-medium py-2">About</a>
+                <a href="#contact-info" class="block text-gray-600 hover:text-indigo-600 transition duration-300 ease-in-out font-medium py-2">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section: Welcoming Banner -->
+    <!-- Tips:
+        - `bg-gradient-to-r from-indigo-500 to-purple-600`: Creates an appealing color gradient.
+        - `py-20`: Provides generous vertical padding for visual impact.
+        - `rounded-b-lg shadow-lg`: Adds rounded corners and a shadow for depth.
+        - Brand name shortened to "SCENUTUAL" as requested.
+    -->
+    <section class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20 rounded-b-lg shadow-lg mx-4 mt-4 sm:mx-6 lg:mx-8">
+        <div class="container mx-auto text-center px-4">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+                Illuminate Your Space with SCENUTUAL Candles
+            </h1>
+            <p class="text-lg sm:text-xl mb-8 opacity-90">
+                Crafted with care, designed to inspire. Discover our exquisite collections.
+            </p>
+            <a href="#products" class="inline-block bg-white text-indigo-600 hover:bg-gray-100 px-8 py-3 rounded-full text-lg font-semibold shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                Shop Our Collections
+            </a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <!-- Tips:
+        - Added a new section for "About Us" content.
+        - Provides detailed information about the brand's mission and values.
+        - `max-w-3xl mx-auto`: Centers the text and limits its width for better readability on larger screens.
+    -->
+    <section id="about-us" class="py-16 px-4 sm:px-6 lg:px-8 bg-white rounded-lg mx-4 sm:mx-6 lg:mx-8 my-8 shadow-lg">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-gray-800">About SCENUTUAL</h2>
+            <p class="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-6">
+                At SCENUTUAL, we believe in the power of scent to transform spaces and elevate moods. We meticulously handcraft each candle using premium, sustainable waxes and exquisite fragrance oils, ensuring a clean burn and a captivating aroma that lingers beautifully. Our passion lies in creating unique, luxurious candles that are not just products, but experiences designed to bring warmth, comfort, and a touch of elegance to your home.
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                From the initial concept to the final pour, every SCENUTUAL candle is a testament to quality and artistry. We are committed to ethical sourcing and environmentally friendly practices, so you can enjoy our candles knowing they are made with care for both you and the planet.
+            </p>
+        </div>
+    </section>
+
+    <!-- Products Section: Displaying Your Unique Candles -->
+    <!-- Tips:
+        - `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4`: This is the core of responsiveness for product display. It means:
+            - 1 column on extra small screens.
+            - 2 columns on small screens (`sm`).
+            - 3 columns on large screens (`lg`).
+            - 4 columns on extra large screens (`xl`).
+        - `gap-8`: Provides consistent spacing between product cards.
+        - `rounded-xl shadow-lg overflow-hidden`: Creates a distinct, visually appealing card for each product.
+        - `transform hover:scale-105 transition duration-300 ease-in-out`: Adds a subtle zoom effect on hover, making the cards interactive.
+        - Image aspect ratio: The `relative` container with `padding-bottom: 133.33%;` (which is 4/3) ensures a 3:4 aspect ratio for the image area, regardless of screen width. The `absolute inset-0 w-full h-full object-cover` on the image makes it fill this container.
+        - Prices removed as requested.
+        - "Add to Cart" buttons changed to "Order" buttons with WhatsApp links.
+    -->
+    <section id="products" class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-800">Our Exquisite Candle Collections</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Product Card 1: Candle in a Cup with Blue Elements -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div class="relative w-full" style="padding-bottom: 133.33%;"> <!-- 3:4 Aspect Ratio (height is 4/3 of width) -->
+                        <img src="e8f9d692-56c5-47c6-bc82-aac73968a1b0.png" alt="Candle in a Cup with Blue Elements" class="absolute inset-0 w-full h-full object-cover rounded-t-xl">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Ocean Breeze Cup Candle</h3>
+                        <p class="text-gray-600 text-sm mb-4">A beautifully crafted candle in a stylish cup, featuring refreshing blue tones.</p>
+                        <div class="flex justify-end items-center">
+                            <a href="https://wa.me/1234567890?text=Hello%2C%20I%20am%20interested%20in%20your%20Ocean%20Breeze%20Cup%20Candle.%20Could%20you%20please%20provide%20more%20information%3F" target="_blank" class="bg-indigo-500 text-white px-4 py-2 rounded-full hover:bg-indigo-600 transition duration-300 ease-in-out text-sm font-medium">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2: Cube Candle with Circular Circles -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div class="relative w-full" style="padding-bottom: 133.33%;">
+                        <img src="b4fe126d-ad99-4884-8750-cfbdea7fd8f4.png" alt="Cube Candle with Circular Circles" class="absolute inset-0 w-full h-full object-cover rounded-t-xl">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Geometric Cube Candle</h3>
+                        <p class="text-gray-600 text-sm mb-4">Modern cube candle design with intricate circular patterns, a true statement piece.</p>
+                        <div class="flex justify-end items-center">
+                            <a href="https://wa.me/1234567890?text=Hello%2C%20I%20am%20interested%20in%20your%20Geometric%20Cube%20Candle.%20Could%20you%20please%20provide%20more%20information%3F" target="_blank" class="bg-indigo-500 text-white px-4 py-2 rounded-full hover:bg-indigo-600 transition duration-300 ease-in-out text-sm font-medium">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3: Sphere Candle -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div class="relative w-full" style="padding-bottom: 133.33%;">
+                        <img src="7664a2a6-63cb-4edf-b91d-b1592fa18e7a (1).png" alt="Elegant Sphere Candle" class="absolute inset-0 w-full h-full object-cover rounded-t-xl">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Smooth Sphere Candle</h3>
+                        <p class="text-gray-600 text-sm mb-4">A perfectly spherical candle, offering a soft glow and elegant presence.</p>
+                        <div class="flex justify-end items-center">
+                            <a href="https://wa.me/1234567890?text=Hello%2C%20I%20am%20interested%20in%20your%20Smooth%20Sphere%20Candle.%20Could%20you%20please%20provide%20more%20information%3F" target="_blank" class="bg-indigo-500 text-white px-4 py-2 rounded-full hover:bg-indigo-600 transition duration-300 ease-in-out text-sm font-medium">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4: Group of Heart Candles -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div class="relative w-full" style="padding-bottom: 133.33%;">
+                        <img src="7664a2a6-63cb-4edf-b91d-b1592fa18e7a (1).png" alt="Charming Heart Candles Set" class="absolute inset-0 w-full h-full object-cover rounded-t-xl">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Romantic Heart Candles</h3>
+                        <p class="text-gray-600 text-sm mb-4">A delightful set of heart-shaped candles, perfect for gifting or special occasions.</p>
+                        <div class="flex justify-end items-center">
+                            <a href="https://wa.me/1234567890?text=Hello%2C%20I%20am%20interested%20in%20your%20Romantic%20Heart%20Candles.%20Could%20you%20please%20provide%20more%20information%3F" target="_blank" class="bg-indigo-500 text-white px-4 py-2 rounded-full hover:bg-indigo-600 transition duration-300 ease-in-out text-sm font-medium">Order</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 5: Group of Teddy Bear Candles -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div class="relative w-full" style="padding-bottom: 133.33%;">
+                        <img src="57c9808b-3921-48ba-9444-8f846e862887.png" alt="Adorable Teddy Bear Candles" class="absolute inset-0 w-full h-full object-cover rounded-t-xl">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Cute Teddy Bear Candles</h3>
+                        <p class="text-gray-600 text-sm mb-4">Irresistibly cute teddy bear shaped candles, ideal for nurseries or unique gifts.</p>
+                        <div class="flex justify-end items-center">
+                            <a href="https://wa.me/1234567890?text=Hello%2C%20I%20am%20interested%20in%20your%20Cute%20Teddy%20Bear%20Candles.%20Could%20you%20please%20provide%20more%20information%3F" target="_blank" class="bg-indigo-500 text-white px-4 py-2 rounded-full hover:bg-indigo-600 transition duration-300 ease-in-out text-sm font-medium">Order</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section: Newsletter Signup -->
+    <!-- Tips:
+        - `bg-indigo-700`: A deep, rich color that stands out.
+        - `rounded-lg mx-4 my-8`: Adds rounded corners and margin, making it a distinct block.
+        - `flex flex-col sm:flex-row justify-center items-center gap-4`: Makes the form responsive, stacking vertically on small screens and horizontally on larger ones.
+        - `rounded-full` for input and button: Gives a modern, soft aesthetic.
+        - Brand name shortened to "SCENUTUAL" as requested.
+        - Updated text for the call to action.
+    -->
+    <section class="bg-indigo-700 text-white py-16 px-4 sm:px-6 lg:px-8 rounded-lg mx-4 sm:mx-6 lg:mx-8 my-8 shadow-lg">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Stay Connected with SCENUTUAL!</h2>
+            <p class="text-lg sm:text-xl mb-8 opacity-90">Join our community for exclusive updates and special offers.</p>
+            <form class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <input type="email" placeholder="Enter your email" class="w-full sm:w-80 p-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-300 shadow-md">
+                <button type="submit" class="bg-white text-indigo-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition duration-300 ease-in-out shadow-md">Join Now</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section: Information and Social Links -->
+    <!-- Tips:
+        - `bg-gray-900`: A dark, sophisticated background for the footer.
+        - `grid grid-cols-1 md:grid-cols-3`: Arranges footer content in a responsive grid.
+        - `space-y-2` for list items: Provides vertical spacing for readability.
+        - Social media icons: Standard practice for online stores, linking to your social presence.
+        - Brand name shortened to "SCENUTUAL" as requested.
+    -->
+    <footer class="bg-gray-900 text-white py-10 px-4 sm:px-6 lg:px-8 rounded-t-lg">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <!-- About Us -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">SCENUTUAL</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Crafting unique and luxurious candles to elevate your ambiance. Quality and customer satisfaction are our top priorities.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 ease-in-out text-sm">Shop All</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 ease-in-out text-sm">FAQs</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 ease-in-out text-sm">Shipping & Returns</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 ease-in-out text-sm">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div id="contact-info">
+                <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                <p class="text-gray-400 text-sm">Email: info@scenutual.com</p>
+                <p class="text-gray-400 text-sm">Phone: (123) 456-7890</p>
+                <div class="flex justify-center md:justify-start space-x-4 mt-4">
+                    <!-- Facebook Icon -->
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300 ease-in-out">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
+                    </a>
+                    <!-- Instagram Icon -->
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300 ease-in-out">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.002 3.714.051 1.05.05 1.79.217 2.428.465.66.254 1.21.597 1.772 1.159.562.562.905 1.112 1.159 1.772.247.638.415 1.178.465 2.428.049.93.051 1.286.051 3.714s-.002 2.784-.051 3.714c-.05.93-.217 1.79-.465 2.428-.254.66-.597 1.21-1.159 1.772-.562.562-1.112.905-1.772 1.159-.638.247-1.178.415-2.428.465-.93.049-1.286.051-3.714.051s-2.784-.002-3.714-.051c-1.05-.05-1.79-.217-2.428-.465-.66-.254-1.21-.597-1.772-1.159-.562-.562-.905-1.112-1.159-1.772-.247-.638-.415-1.178-.465-2.428-.049-.93-.051-1.286-.051-3.714s.002-2.784.051-3.714c.05-.93.217-1.79.465-2.428.254-.66.597-1.21 1.159-1.772.562-.562 1.112-.905 1.772-1.159.638-.247 1.178-.415 2.428-.465.93-.049 1.286-.051 3.714-.051zM12 6.865c-2.31 0-4.195 1.885-4.195 4.195S9.69 15.255 12 15.255s4.195-1.885 4.195-4.195S14.31 6.865 12 6.865zm0 6.865c-1.47 0-2.67-1.2-2.67-2.67s1.2-2.67 2.67-2.67 2.67 1.2 2.67 2.67-1.2 2.67-2.67 2.67zm4.558-6.167c-.66.66-.66 1.732 0 2.392.66.66 1.732.66 2.392 0 .66-.66.66-1.732 0-2.392-.66-.66-1.732-.66-2.392 0z" clip-rule="evenodd"></path></svg>
+                    </a>
+                    <!-- Twitter Icon -->
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300 ease-in-out">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c-1.096.372-1.956.124-2.518-.315C5.163 19.34 5 18.498 5 17.587V15.5c0-.986.8-1.8 1.786-1.8h.928c.986 0 1.786.8 1.786 1.8v2.087c0 .986-.8 1.8-1.786 1.8H6.5c-.276 0-.5-.224-.5-.5v-1.087c0-.986.8-1.8 1.786-1.8h.928c.986 0 1.786.8 1.786 1.8v2.087c0 .986-.8 1.8-1.786 1.8H8.29zm7.42-14.251c.372-1.096.124-1.956-.315-2.518-.44-.562-1.282-.772-2.193-.772h-2.087c-.986 0-1.8.8-1.8 1.786v.928c0 .986.8 1.786 1.8 1.786h2.087c.986 0 1.8-.8 1.8-1.786V6.5c0-.276-.224-.5-.5-.5zM15.5 8.5c-.986 0-1.8-.8-1.8-1.786V5.5c0-.276.224-.5.5-.5h1.087c.986 0 1.8.8 1.8 1.786v.928c0 .986-.8 1.786-1.786 1.786H15.5zM12 22c-5.523 0-10-4.477-10-10S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500 text-sm">
+            &copy; 2025 SCENUTUAL. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        // Tips:
+        // - This simple script toggles the 'hidden' class on the mobile menu, showing/hiding it.
+        // - Ensures the mobile experience is user-friendly.
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        // Tips:
+        // - Selects all anchor tags whose 'href' attribute starts with '#'.
+        // - `e.preventDefault()` stops the browser's default instant jump, allowing custom smooth scroll.
+        // - `scrollIntoView({ behavior: 'smooth' })` is a modern browser API for smooth scrolling.
+        // - `history.pushState` updates the URL hash without causing a page reload or jump, maintaining clean URLs.
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default jump behavior
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Scroll to the target element with smooth behavior
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Optional: Update URL hash without jumping
+                    // This makes the URL reflect the current section, useful for sharing links.
+                    history.pushState(null, null, targetId);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
